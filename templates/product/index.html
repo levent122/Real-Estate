@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+    	<!-- Hero section -->
+    	<section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}">
+    		<div class="container hero-text text-white">
+    			<h2>find your place with our local life style</h2>
+    			<p>Search real estate property records, houses, condos, land and more on leramiz.com®.<br>Find property info from the most comprehensive source data.</p>
+    		</div>
+    	</section>
+    	<!-- Hero section end -->
+
+		{% include 'parts/_filter.html' %}
+
+    	<!-- feature section -->
+    	<section class="feature-section spad">
+    		<div class="container">
+    			<div class="section-title text-center">
+    				<h3>Featured Listings</h3>
+    				<p>Browse houses and flats for sale and to rent in your area</p>
+				</div>
+				<div class="row">
+					<div class="col-md-6 offset-md-3">
+						{% include 'parts/_message.html' %}
+					</div>
+				</div>
+    			<div class="row">
+
+					{% for product in products %}
+    				<div class="col-lg-4 col-md-6">
+    					<!-- feature -->
+    					<div class="feature-item">
+							<a href="{% url 'product' product.id %}">
+    							<div class="feature-pic set-bg" data-setbg="{{ product.photo_main.url }}">
+									{% if product.status == 'S' %}
+									<div class="sale-notic">FOR SALE</div>
+									{% else %}
+									<div class="rent-notic">FOR RENT</div>
+									{% endif %}
+									<a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+										<i class="fa fa-heart-o fa-2x"></i>
+									</a>
+								</div>
+							</a>
+    						<div class="feature-text">
+    							<div class="text-center feature-title">
+    								<h5>{{ product.title }}</h5>
+    								<p><i class="fa fa-map-marker"></i> {{ product.city }}, {{ product.district }}</p>
+    							</div>
+    							<div class="room-info-warp">
+    								<div class="room-info">
+    									<div class="rf-left">
+    										<p><i class="fa fa-th-large"></i> {{ product.sqft }} Square foot</p>
+    										<p><i class="fa fa-bed"></i> {{ product.bedroom }} Bedroom</p>
+    									</div>
+    									<div class="rf-right">
+    										<p><i class="fa fa-car"></i> {{ product.garage }} Garage</p>
+    										<p><i class="fa fa-bath"></i> {{ product.bathroom }} Bathroom</p>
+    									</div>	
+    								</div>
+    								<div class="room-info">
+    									<div class="rf-left">
+    										<p>
+												<a style="color: #707070" href="{% url 'profile' product.realtor.id %}">
+													<i class="fa fa-user"></i> {{ product.realtor.first_name }} {{ product.realtor.last_name }} 
+												</a>
+											</p>
+    									</div>
+    									<div class="rf-right">
+    										<p><i class="fa fa-clock-o"></i> <small>{{ product.published_date | timesince }}</small></p>
+    									</div>	
+    								</div>
+    							</div>
+    							<a href="{% url 'product' product.id %}" class="room-price">$ {{ product.price | intcomma }}</a>
+    						</div>
+    					</div>
+					</div>
+					{% endfor %}
+
+    			</div>
+    		</div>
+    	</section>
+    	<!-- feature section end -->
+
+    	<!-- Review section -->
+    	<section class="review-section set-bg" data-setbg="{% static 'img/review-bg.jp' %}g">
+    		<div class="container">
+    			<div class="review-slider owl-carousel">
+    				<div class="review-item text-white">
+    					<div class="rating">
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    					</div>
+    					<p>“Leramiz was quick to understand my needs and steer me in the right direction. Their professionalism and warmth made the process of finding a suitable home a lot less stressful than it could have been. Thanks, agent Tony Holland.”</p>
+    					<h5>Stacy Mc Neeley</h5>
+    					<span>CEP’s Director</span>
+    					<div class="clint-pic set-bg" data-setbg="{% static 'img/review/1.jpg' %}"></div>
+    				</div>
+    				<div class="review-item text-white">
+    					<div class="rating">
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    					</div>
+    					<p>“Leramiz was quick to understand my needs and steer me in the right direction. Their professionalism and warmth made the process of finding a suitable home a lot less stressful than it could have been. Thanks, agent Tony Holland.”</p>
+    					<h5>Stacy Mc Neeley</h5>
+    					<span>CEP’s Director</span>
+    					<div class="clint-pic set-bg" data-setbg="{% static 'img/review/1.jpg' %}"></div>
+    				</div>
+    				<div class="review-item text-white">
+    					<div class="rating">
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    						<i class="fa fa-star"></i>
+    					</div>
+    					<p>“Leramiz was quick to understand my needs and steer me in the right direction. Their professionalism and warmth made the process of finding a suitable home a lot less stressful than it could have been. Thanks, agent Tony Holland.”</p>
+    					<h5>Stacy Mc Neeley</h5>
+    					<span>CEP’s Director</span>
+    					<div class="clint-pic set-bg" data-setbg="{% static 'img/review/1.jpg' %}"></div>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- Review section end-->
+
+		<div style="margin-top: 100px"></div>
+
+{% endblock %}

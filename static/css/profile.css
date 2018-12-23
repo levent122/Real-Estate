@@ -1,0 +1,21 @@
+.content {
+    text-align: center
+}
+
+.content img {
+    margin-bottom: 50px
+}
+
+.content p {
+    margin-bottom: 30px;
+    font: bold 15px MV Boli
+}
+
+.content a {
+    margin-right: 20px;
+    color: #30caa0
+}
+
+.content a:hover {
+    color: #15906e
+}

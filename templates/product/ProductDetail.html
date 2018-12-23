@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %} {{ product.title }} {% endblock %}
+
+{% block content %}
+
+        <section class="page-top-section set-bg" data-setbg="{% static 'img/page-top-bg.jpg' %}">
+            <div class="container text-white">
+                <h2>{{ product.title }}</h2>
+            </div>
+        </section>
+
+        <div class="site-breadcrumb">
+            <div class="container">
+                <a href="{% url 'index' %}"><i class="fa fa-home"></i>Home</a>
+                <span><i class="fa fa-angle-right"></i>Single Listing</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px" class="container">
+            {% include 'parts/_message.html' %}
+        </div>
+
+	    <section class="page-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 single-list-page">
+                        <div class="single-list-slider owl-carousel" id="sl-slider">
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_main.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_1.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_2.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_3.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_4.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_5.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_6.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_7.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_8.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_9.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="sl-item set-bg" data-setbg="{{ product.photo_10.url }}">
+                                {% if product.status == 'S' %}
+                                <div class="sale-notic">FOR SALE</div>
+                                {% else %}
+                                <div class="rent-notic">FOR RENT</div>
+                                {% endif %}
+                                <a style="float: right; margin: 20px 20px 0 0; color: #e94646" href="{% url 'addLike' product.id %}">
+                                    <i class="fa fa-heart-o fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="owl-carousel sl-thumb-slider" id="sl-slider-thumb">
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_main.url }}"></div>
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_1.url }}"></div>
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_2.url }}"></div>
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_3.url }}"></div>
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_4.url }}"></div>
+                            {% if product.photo_5 %}
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_5.url }}"></div>
+                            {% endif %}
+                            {% if product.photo_6 %}
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_6.url }}"></div>
+                            {% endif %}
+                            {% if product.photo_7 %}
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_7.url }}"></div>
+                            {% endif %}
+                            {% if product.photo_8 %}
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_8.url }}"></div>
+                            {% endif %}
+                            {% if product.photo_9 %}
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_9.url }}"></div>
+                            {% endif %}
+                            {% if product.photo_10 %}
+                            <div class="sl-thumb set-bg" data-setbg="{{ product.photo_10.url }}"></div>
+                            {% endif %}
+                        </div>
+                        <div class="single-list-content">
+                            <div class="row">
+                                <div class="col-xl-8 sl-title">
+                                    <h2>{{ product.title }}</h2>
+                                    <p><i class="fa fa-map-marker"></i>{{ product.city }}, {{ product.district }}</p>
+                                </div>
+                                <div class="col-xl-4">
+                                    <a href="#" class="price-btn">$ {{ product.price | intcomma }}</a>
+                                </div>
+                            </div>
+                            <h3 class="sl-sp-title">Property Details</h3>
+                            <div class="row property-details-list">
+                                <div class="col-md-4 col-sm-6">
+                                    <p><i class="fa fa-th-large"></i> {{ product.sqft }} Square foot</p>
+                                    <p><i class="fa fa-bed"></i> {{ product.bedroom }} Bedroom</p>
+                                    <p>
+                                        <a style="color: #707070" href="{% url 'profile' product.realtor.id %}">
+                                            <i class="fa fa-user"></i> {{ product.realtor.first_name }} {{ product.realtor.last_name }}
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <p><i class="fa fa-car"></i> {{ product.garage }} Garage</p>
+                                    <p><i class="fa fa-clock-o"></i> {{  product.published_date | timesince }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><i class="fa fa-bath"></i> {{ product.bathroom }} Bathroom</p>
+                                    <p><i class="fa fa-trophy"></i> {{ product.product_age }} years age</p>
+                                </div>
+                            </div>
+                            <h3 class="sl-sp-title">Description</h3>
+                            <div class="description">
+                                <p>{{ product.description }}</p>
+                                </div>
+                            <h3 class="sl-sp-title">Property Details</h3>
+                            <div class="row property-details-list">
+                                <div class="col-md-4 col-sm-6">
+                                    {% if product.air_conditioning == 'Y' %}
+                                    <p><i class="fa fa-check-circle-o"></i> Air conditioning</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Air conditioning</p>
+                                    {% endif %}
+                                    {% if product.telephone == 'Y' %}
+                                    <p><i class="fa fa-check-circle-o"></i> Telephone</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Telephone</p>
+                                    {% endif %}
+                                    {% if product.laundry_room == 'Y' %}
+                                    <p><i class="fa fa-check-circle-o"></i> Laundry Room</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Laundry Room</p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    {% if product.central_heating == 'Y' %}
+                                    <p><i class="fa fa-check-circle-o"></i> Central Heating</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Central Heating</p>
+                                    {% endif %}                           
+                                    {% if product.metro_central == 'Y' %}
+                                    <p><i class="fa fa-check-circle-o"></i> Metro Central</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Metro Central</p>
+                                    {% endif %}                                
+                                </div>
+                                <div class="col-md-4">
+                                    {% if product.city_views == 'Y' %}
+                                    <p><i class="fa fa-check-circle-o"></i> City views</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> City views</p>
+                                    {% endif %}          
+                                    {% if product.internet == 'Y' %}                                   
+                                    <p><i class="fa fa-check-circle-o"></i> Internet</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Internet</p>
+                                    {% endif %}                                
+                                    {% if product.electric_range == 'Y' %}                                    
+                                    <p><i class="fa fa-check-circle-o"></i> Electric Range</p>
+                                    {% else %}
+                                    <p><i style="color: red" class="fa fa-times-circle"></i> Electric Range</p>
+                                    {% endif %}                                
+                                </div>
+                            </div>
+
+                            {% if product.video %}
+                            <h3 class="sl-sp-title bd-no">Video</h3>
+                            <div class="perview-video">
+                                <img src="{% static 'img/video.jpg' %}" alt="">
+                                <a href="https://www.youtube.com/watch?v=v13nSVp6m5I" class="video-link">
+                                    <img src="{% static 'img/video-btn.png' %}" alt="">
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- sidebar -->
+                    <div class="col-lg-4 col-md-7 sidebar">
+                        <div class="author-card">
+                            <div class="author-img set-bg" data-setbg="{{ photo }}"></div>
+                            <div class="author-info">
+                                <h5><a style="color: #707070" href="{% url 'profile' product.realtor.id %}">
+                                    {{ product.realtor.first_name }} {{ product.realtor.last_name }}
+                                    </a>
+                                </h5>
+
+                            </div>
+                            <div class="author-contact">
+                                {% if phone %}
+                                <p><i class="fa fa-phone"></i>{{ phone }}</p>
+                                {% endif %}
+                                <p><i class="fa fa-envelope"></i>{{ product.realtor }}</p>
+                            </div>
+                        </div>
+                        <div class="contact-form-card">
+                            <h5>Do you have any question?</h5>
+                            <form>
+                                <input type="text" placeholder="Your name">
+                                <input type="text" placeholder="Your email">
+                                <textarea placeholder="Your question"></textarea>
+                                <button>SEND</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<div class="filter-search">
+            <div class="container">
+                <form action="{% url 'search' %}" class="filter-form">
+                    {% csrf_token %}
+                    <input type="text" name="keywords" placeholder="Enter a street name, address number or keyword">
+                    <select name="city">
+                        <option selected="true" disabled="disabled" value="City">City</option>
+                        {% for key,value in city_choices.items %}
+                          <option value="{{ key }}"
+                          {% if key == values.city %}
+                            selected
+                          {% endif %}
+                          >{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="price">
+                        <option selected="true" disabled="disabled" value="City">Price</option>
+                        {% for key,value in price_choices.items %}
+                          <option value="{{ key }}"
+                          {% if key == values.price %}
+                            selected
+                          {% endif %}
+                          >{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="site-btn fs-submit">Search</button>
+                </form>
+            </div>
+        </div>

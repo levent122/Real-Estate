@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block link %}
+        <link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    	<section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}">
+    		<div class="container hero-text-user">
+                <div class="row">
+                    <div class="col-md-4 offset-md-4">
+
+                        <div class="card" style="background: rgba(0, 0, 0, 0.5)">
+                            <div class="card-header">
+                                <h4 style="color: white">Login</h4> 
+                            </div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <p><button type="submit">Login</button></p>
+                                    <a href="{% url 'password_reset' %}">Forgot password</a>
+                                </form>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+    		</div>
+        </section>
+        
+        <div style="margin-bottom: -69px"></div>
+
+{% endblock %}

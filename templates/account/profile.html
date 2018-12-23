@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %} {{ user.first_name }} {{ user.last_name }} {% endblock %}
+
+{% block link %}
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+        <section class="page-top-section set-bg" data-setbg="{% static 'img/page-top-bg.jpg' %}">
+            <div class="container text-white">
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+            </div>
+        </section>
+
+        <div class="site-breadcrumb">
+            <div class="container">
+                <a href="{% url 'index' %}"><i class="fa fa-home"></i>Home</a>
+                <span><i class="fa fa-angle-right"></i>Profile</span>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="content">
+                                <img src="{{ user_info.photo.url }}" class="rounded-circle" alt="Cinque Terre" width="150px" height="150px">
+                                <p>{{ user_info.user.first_name }} {{ user_info.user.last_name }}</p>
+                                <p>{{ user_info.user.username }}</p>
+                                <p>{{ user_info.phone }}</p>
+                                <p>{{ user_info.birthday }}</p>
+                                <p>{{ user_info.description }}</p>
+                                {% if user_info.instagram %}
+                                <a href="https://www.instagram.com/{{ user_info.instagram }}"><i class="fa fa-instagram fa-2x"></i></a>
+                                {% endif %}
+                                {% if user_info.facebook %}
+                                <a href="https://www.facebook.com/{{ user_info.facebook }}"><i class="fa fa-facebook fa-2x"></i></a>
+                                {% endif %}
+                                {% if user_info.twitter %}
+                                <a href="https://www.twitter.com/{{ user_info.twitter }}"><i class="fa fa-twitter fa-2x"></i></a>
+                                {% endif %}
+                                {% if user_info.web %}
+                                <a href="https://{{ user_info.web }}"><i class="fa fa-globe fa-2x"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    	<section class="feature-section spad">
+            <div class="container">
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-item">
+                            <a href="{% url 'product' product.id %}">
+                                <div class="feature-pic set-bg" data-setbg="{{ product.photo_main.url }}">
+                                    {% if product.status == 'S' %}
+                                    <div class="sale-notic">FOR SALE</div>
+                                    {% else %}
+                                    <div class="rent-notic">FOR RENT</div>
+                                    {% endif %}
+                                </div>
+                            </a>
+                            <div class="feature-text">
+                                <div class="text-center feature-title">
+                                    <h5>{{ product.title }}</h5>
+                                    <p><i class="fa fa-map-marker"></i> {{ product.city }}, {{ product.district }}</p>
+                                </div>
+                                <div class="room-info-warp">
+                                    <div class="room-info">
+                                        <div class="rf-left">
+                                            <p><i class="fa fa-th-large"></i> {{ product.sqft }} Square foot</p>
+                                            <p><i class="fa fa-bed"></i> {{ product.bedroom }} Bedroom</p>
+                                        </div>
+                                        <div class="rf-right">
+                                            <p><i class="fa fa-car"></i> {{ product.garage }} Garage</p>
+                                            <p><i class="fa fa-bath"></i> {{ product.bathroom }} Bathroom</p>
+                                        </div>	
+                                    </div>
+                                    <div class="room-info">
+                                        <div class="rf-left">
+                                            <p>
+                                                <a style="color: #707070" href="{% url 'profile' product.realtor.id %}">
+                                                    <i class="fa fa-user"></i> {{ product.realtor.first_name }} {{ product.realtor.last_name }} 
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="rf-right">
+                                            <p><i class="fa fa-clock-o"></i> <small>{{ product.published_date | timesince }}</small></p>
+                                        </div>	
+                                    </div>
+                                </div>
+                                <a href="{% url 'product' product.id %}" class="room-price">$ {{ product.price | intcomma }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="offset-md-5">
+                        <div class="site-pagination">
+                            <div class="col-md-12">
+                              {% if products.has_other_pages %}
+                                <ul class="pagination">
+                                  {% if products.has_previous %}
+                                    <li class="page-item">
+                                      <a href="?page={{products.previous_page_number}}" class="page-link">&laquo;</a>
+                                    </li>
+                                  {% else %}
+                                    <li class="page-item disabled">
+                                      <a class="page-link">&laquo;</a>
+                                    </li>
+                                  {% endif %}
+                                  {% for i in products.paginator.page_range %}
+                                    {% if products.number == i %}
+                                      <li class="page-item active">
+                                        <a class="page-link">{{i}}</a>
+                                      </li>
+                                    {% else %}
+                                      <li class="page-item">
+                                        <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                      </li>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if products.has_next %}
+                                    <li class="page-item">
+                                      <a href="?page={{products.next_page_number}}" class="page-link">&raquo;</a>
+                                    </li>
+                                  {% else %}
+                                    <li class="page-item disabled">
+                                      <a class="page-link">&raquo;</a>
+                                    </li>
+                                  {% endif %}
+                                </ul>
+                              {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+{% endblock %}

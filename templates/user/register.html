@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Register {% endblock %}
+
+{% block link %}
+        <link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock %}
+
+{% block content %}
+
+        <section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}">
+    		<div class="container hero-text-user">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+
+                        <div class="card" style="background: rgba(0, 0, 0, 0.5);">
+                            <div class="card-header">
+                                <h4 style="color: white">Register</h4> 
+                            </div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <p><button type="submit">Create New Account</button></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+    		</div>
+        </section>
+        
+        <div style="margin-bottom: -61px"></div>
+
+{% endblock %}
